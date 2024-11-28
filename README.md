@@ -3,6 +3,43 @@ A comprehensive guide on securing Node.js applications, aligned with OWASP WSTG 
 
 ![Securing-NodeJS-Applications](images/cover.png)
 
+# Table of Contents
+
+- [Securing Your Node.js Application: A Comprehensive Guide](#securing-your-nodejs-application-a-comprehensive-guide)
+  - [Introduction](#introduction)
+  - [Information Gathering (WSTG-INFO)](#information-gathering-wstg-info)
+    - [Typical Express.js Server Configuration and Fingerprinting](#typical-expressjs-server-configuration-and-fingerprinting)
+  - [Configuration and Deployment Management Testing (WSTG-CONF)](#configuration-and-deployment-management-testing-wstg-conf)
+    - [Running in Development Mode in Production](#running-in-development-mode-in-production)
+    - [Using Default or Weak Credentials](#using-default-or-weak-credentials)
+  - [Identity Management Testing (WSTG-IDNT)](#identity-management-testing-wstg-idnt)
+    - [Weak Username Policies and Account Enumeration](#weak-username-policies-and-account-enumeration)
+  - [Authentication Testing (WSTG-ATHN)](#authentication-testing-wstg-athn)
+    - [Brute-Force Attacks on Passwords and 2FA](#brute-force-attacks-on-passwords-and-2fa)
+  - [Authorization Testing (WSTG-ATHZ)](#authorization-testing-wstg-athz)
+    - [Insecure Direct Object References (IDOR)](#insecure-direct-object-references-idor)
+  - [Session Management Testing (WSTG-SESS)](#session-management-testing-wstg-sess)
+    - [Tokens Without Expiration Time](#tokens-without-expiration-time)
+    - [Insecure Token Storage](#insecure-token-storage)
+  - [Input Validation Testing (WSTG-INPV)](#input-validation-testing-wstg-inpv)
+    - [Lack of Input Validation](#lack-of-input-validation)
+  - [Testing for Error Handling (WSTG-ERRH)](#testing-for-error-handling-wstg-errh)
+    - [Exposing Sensitive Error Information](#exposing-sensitive-error-information)
+  - [Testing for Weak Cryptography (WSTG-CRYP)](#testing-for-weak-cryptography-wstg-cryp)
+    - [Using Insecure Hashing Algorithms](#using-insecure-hashing-algorithms)
+    - [Hardcoding Secret Keys](#hardcoding-secret-keys)
+  - [Business Logic Testing (WSTG-BUSL)](#business-logic-testing-wstg-busl)
+    - [Abuse of Bulk Operations](#abuse-of-bulk-operations)
+  - [Client-side Testing (WSTG-CLNT)](#client-side-testing-wstg-clnt)
+    - [Escaping User Input Using the `xss` Library](#escaping-user-input-using-the-xss-library)
+  - [API Testing (WSTG-APIT)](#api-testing-wstg-apit)
+    - [GraphQL Introspection Exposure](#graphql-introspection-exposure)
+    - [Unrestricted Query Complexity](#unrestricted-query-complexity)
+  - [Conclusion](#conclusion)
+  - [About](#about)
+  - [Further Reading](#further-reading)
+
+
 # Introduction
 
 If you've been working with Node.js, you know how it enables fast, scalable web application development. Its event-driven, non-blocking I/O model is ideal for building efficient, real-time applications. However, in the rush to develop new features and deploy code quickly, security can sometimes become a secondary consideration. Balancing feature development with security is a common challenge.
